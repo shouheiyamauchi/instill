@@ -1,0 +1,30 @@
+{
+  "allowSyntheticDefaultImports": true,
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~assets/*": ["./assets/*"],
+      "~src/*": ["./src/*"]
+    },
+    "esModuleInterop": true,
+    "inlineSources": true,
+    "jsx" : "react-native",
+    "lib": ["es6"],
+    "module": "es6",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6"
+  },
+  "exclude": [
+    "node_modules",
+  ],
+  "includes" :[
+    "./src/typings/**/*.d.ts"
+  ],
+}
