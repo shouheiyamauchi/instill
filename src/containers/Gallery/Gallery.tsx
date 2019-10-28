@@ -32,7 +32,7 @@ class Illustration extends React.Component<{
           }))}
           onPageSelected={this.setImageIndex}
         />
-        <View style={style.descriptionContainer}>
+        <View style={style.descriptionContainer} onTouchEnd={() => this.props.navigation.goBack()}>
           <Text style={style.description}>
             {illustration.items[imageIndex].description ||
               illustration.description}

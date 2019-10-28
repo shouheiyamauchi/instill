@@ -4,11 +4,12 @@ import {
   Dimensions,
   Image,
   Linking,
-  ScrollView,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
   View
 } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { NavigationScreenProp } from 'react-navigation'
 import logo from '~assets/images/logo.png'
@@ -66,7 +67,9 @@ class AppContainer extends React.Component<{
       <>
         <ScrollView>
           <View style={s.style.navBar}>
-            <Image source={logo} style={s.logo({ source: logo }).style} />
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+              <Image source={logo} style={s.logo({ source: logo }).style} />
+            </TouchableOpacity>
             <View style={s.style.hamburgerContainer}>
               <TouchableHighlight onPress={this.toggleMenu}>
                 <Icon name="bars" size={25} />
