@@ -7,6 +7,8 @@ import Home from '~src/containers/Home/Home'
 import Illustrations from '~src/containers/Illustrations/Illustrations'
 import Project from '~src/containers/Project/Project'
 
+console.disableYellowBox = true
+
 const AppNavigator = createStackNavigator(
   {
     About,
