@@ -5,9 +5,9 @@ import {
   StyleSheet
 } from 'react-native'
 
-export const style = StyleSheet.create({
+export const style = (columns: number) => StyleSheet.create({
   column: {
-    width: '50%'
+    width: `${100 / columns}%`
   },
   container: {
     flexDirection: 'row',
@@ -15,8 +15,8 @@ export const style = StyleSheet.create({
   }
 })
 
-export const portfolioImage = (props: { source: ImageSourcePropType }) => {
-  const width = Dimensions.get('window').width / 2
+export const portfolioImage = (props: { columns: number, source: ImageSourcePropType }) => {
+  const width = Dimensions.get('window').width / props.columns
 
   return StyleSheet.create({
     style: {

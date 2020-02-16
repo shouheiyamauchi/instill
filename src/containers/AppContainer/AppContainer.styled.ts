@@ -33,6 +33,13 @@ export const style = StyleSheet.create({
     paddingTop: 10,
     width: 200
   },
+  menuItem: {
+    color: colors.SOCIAL_ICONS,
+    fontSize: 17,
+    fontWeight: '500',
+    paddingLeft: 20,
+    paddingRight: 20
+  },
   navBar: {
     display: 'flex',
     flexDirection: 'row',

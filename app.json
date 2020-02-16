@@ -1,4 +1,7 @@
 {
   "name": "instillcreative",
-  "displayName": "instillcreative"
+  "displayName": "instillcreative",
+  "assetBundlePatterns": [
+    "assets/images/*"
+  ]
 }

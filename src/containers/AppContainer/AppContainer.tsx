@@ -4,6 +4,7 @@ import {
   Dimensions,
   Image,
   Linking,
+  SafeAreaView,
   Text,
   TouchableHighlight,
   TouchableOpacity,
@@ -64,16 +65,17 @@ class AppContainer extends React.Component<{
 
   public render() {
     return (
-      <>
+      <SafeAreaView>
         <ScrollView>
           <View style={s.style.navBar}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
               <Image source={logo} style={s.logo({ source: logo }).style} />
             </TouchableOpacity>
             <View style={s.style.hamburgerContainer}>
-              <TouchableHighlight onPress={this.toggleMenu}>
+              {this.menuItems.map((menuItem) => <Text style={s.style.menuItem} onPress={menuItem.onPress}>{menuItem.name}</Text>)}
+              {/* <TouchableHighlight onPress={this.toggleMenu}>
                 <Icon name="bars" size={25} />
-              </TouchableHighlight>
+              </TouchableHighlight> */}
             </View>
             <View style={s.style.icons}>
               <Icon
@@ -114,7 +116,7 @@ class AppContainer extends React.Component<{
           menuItems={this.menuItems}
           toggleMenu={this.toggleMenu}
         />
-      </>
+      </SafeAreaView>
     )
   }
 }
