@@ -70,9 +70,9 @@ class Home extends React.Component<{
   public render() {
     return (
       <AppContainer key={this.state.reRenderKey} navigation={this.props.navigation}>
-        <View style={s.style(columns.length).container}>
+        <View style={s.style.container}>
           {columns.map((column) => (
-            <View style={s.style(columns.length).column}>
+            <View style={s.columns(columns.length).style}>
               {column.map((item) => (
                 <TouchableOpacity
                   key={`home-${item}`}

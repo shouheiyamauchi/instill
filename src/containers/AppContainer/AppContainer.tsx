@@ -20,12 +20,45 @@ import Menu from '../Menu/Menu'
 
 import * as s from './AppContainer.styled'
 
+enum Orientation {
+  PORTRAIT,
+  LANDSCAPE
+}
+
 class AppContainer extends React.Component<{
   navigation: NavigationScreenProp<any, any>
+},
+{
+  menuBounceValue: Animated.Value
+  orientation: Orientation
+  showMenu: boolean
 }> {
-  public state = {
-    menuBounceValue: new Animated.Value(0),
-    showMenu: false
+  public constructor(props: {
+    navigation: NavigationScreenProp<any, any>
+  }) {
+    super(props)
+
+    this.state = {
+      menuBounceValue: new Animated.Value(0),
+      orientation: this.getOrientation(Dimensions.get('screen')),
+      showMenu: false
+    }
+
+    Dimensions.addEventListener('change', this.updateOrientation)
+  }
+
+  public componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.updateOrientation)
+  }
+
+  public updateOrientation = (value: any) => {
+    this.setState({
+      orientation: this.getOrientation(value.screen)
+    })
+  }
+
+  public getOrientation = ({ width, height }: { fontScale: number, height: number, scale: number, width: number }) => {
+    return width < height ? Orientation.PORTRAIT : Orientation.LANDSCAPE
   }
 
   public menuItems = [
@@ -72,10 +105,12 @@ class AppContainer extends React.Component<{
               <Image source={logo} style={s.logo({ source: logo }).style} />
             </TouchableOpacity>
             <View style={s.style.hamburgerContainer}>
-              {this.menuItems.map((menuItem) => <Text style={s.style.menuItem} onPress={menuItem.onPress}>{menuItem.name}</Text>)}
-              {/* <TouchableHighlight onPress={this.toggleMenu}>
-                <Icon name="bars" size={25} />
-              </TouchableHighlight> */}
+              {this.state.orientation === Orientation.LANDSCAPE && this.menuItems.map((menuItem) => <Text style={s.style.menuItem} onPress={menuItem.onPress}>{menuItem.name}</Text>)}
+              {this.state.orientation === Orientation.PORTRAIT && (
+                <TouchableHighlight onPress={this.toggleMenu}>
+                  <Icon name="bars" size={25} />
+                </TouchableHighlight>
+              )}
             </View>
             <View style={s.style.icons}>
               <Icon

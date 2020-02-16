@@ -5,13 +5,16 @@ import {
   StyleSheet
 } from 'react-native'
 
-export const style = (columns: number) => StyleSheet.create({
-  column: {
-    width: `${100 / columns}%`
-  },
+export const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginTop: 100
+  }
+})
+
+export const columns = (columns: number) => StyleSheet.create({
+  style: {
+    width: `${100 / columns}%`
   }
 })
 
